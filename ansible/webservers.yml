@@ -1,0 +1,36 @@
+---
+- name: Playbook for Webservers
+  hosts: tag_Name_Webserver, tag_aws_autoscaling_groupName_WebScale
+  become: true
+
+  tasks:
+  - name: Install Apache webserver
+    apt: name=apache2 state=latest update_cache=true
+
+  - name: Install PHP and DB-Client
+    apt: name={{ item }} state=latest update_cache=true
+    loop:
+     - php
+     - php-mysql
+     - mariadb-client
+
+  - name: Remove index.html
+    file: path=/var/www/html/index.html state=absent
+
+  - name: Download WordPress
+    unarchive: 
+      src: https://wordpress.org/latest.tar.gz 
+      dest: /var/www/html 
+      mode: 0755 
+      group: www-data 
+      remote_src: true
+      extra_opts: --strip-components=1 
+  
+  - name: Copy wp-config.php
+    template: src=templates/wp-config.j2 dest=/var/www/html/wp-config.php mode=0755
+    notify: Restart Apache
+
+  handlers:
+
+  - name: Restart Apache
+    service: name=apache2 state=restarted enabled=true

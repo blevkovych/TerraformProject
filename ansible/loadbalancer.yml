@@ -1,0 +1,17 @@
+---
+- name: Configure loadbalancer
+  hosts: tag_Name_LoadBalancer
+  become: true
+
+  tasks:
+  - name: Install nginx
+    apt: name=nginx state=latest update_cache=true
+    
+  - name: Copy config
+    template: src=templates/default.j2 dest=/etc/nginx/sites-available/default mode=0755
+    notify: Restart nginx
+
+  handlers:
+
+  - name: Restart nginx
+    service: name=nginx state=restarted enabled=true

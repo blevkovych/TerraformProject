@@ -1,0 +1,13 @@
+upstream website {
+{% for host in groups['tag_Name_Webserver'] %}
+  server {{ hostvars[host].ec2_private_ip_address }};
+{% endfor %}  
+}
+server {
+  listen 80;
+  add_header Cache-Control "no-store"; #Opera behaving like crazy
+  location / {
+    proxy_pass http://website;
+  }
+}
+
