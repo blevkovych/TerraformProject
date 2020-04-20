@@ -5,7 +5,7 @@ dynamic host file and if the output is different from the last one its gonna sta
 webserver create new user in database and add new server to a loadbalancer.
 
 To run the script you need to create aws user with secret key. Also you obviously need to have ansible, terraform and both python, python3
-You need to install such python modules: boto, ansible using pip for both pythons. And you need to have user that can run terraform
+  You need to install such python modules: boto and ansible with use of pip for both pythons. And you need to have user that can run terraform
 and ansible.
 
 Command to run the script: python setup.py << AWS_ACCESS_KEY_ID >> << AWS_SECRET_ACCESS_KEY >> << AWS_DEFAULT_REGION >> &
