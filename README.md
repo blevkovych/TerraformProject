@@ -4,7 +4,7 @@ Ansible is gonna configure database, webservers, loadbalancer. Also in this scri
 dynamic host file and if the output is different from the last one its gonna start another ansible playbook which will configure new
 webserver create new user in database and add new server to a loadbalancer.
 
-To run the script you need to create aws user with secret key. Also you need to have obviously ansible, terraform and both python, python3
+To run the script you need to create aws user with secret key. Also you obviously need to have ansible, terraform and both python, python3
 You need to install such python modules: boto, ansible using pip for both pythons. And you need to have user that can run terraform
 and ansible.
 
