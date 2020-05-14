@@ -1,3 +1,4 @@
+# Become an architect Part.1 .
 In this project Terraform is gonna create ssh key, security group , 2 instances named as loadbalancer and database, launch configuration
 as plain Ubuntu Server 18.04 LTS, auto sclaling group and auto scaling policy in which if CPU gets over 60% its gonna create new instance.
 Ansible is gonna configure database, webservers, loadbalancer. Also in this script its gonna run constantly ec2.py script which creates
