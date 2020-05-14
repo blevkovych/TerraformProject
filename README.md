@@ -10,4 +10,4 @@ and ansible.
 Command to run the script: python setup.py << AWS_ACCESS_KEY_ID >> << AWS_SECRET_ACCESS_KEY >> << AWS_DEFAULT_REGION >> &
 
   Script is going to print out terraform and first ansible configuration. After that if everytihg runs smoothly you can start doing
-anything you want because it's running in the background.
+anything you want because it's running in the background. 
